@@ -80,6 +80,10 @@ body {
 /*********************************************
  * IMAGES
  *********************************************/
+.reveal img, .reveal video, .reveal iframe {
+  max-width: 95%;
+  max-height: 95%; }
+
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
