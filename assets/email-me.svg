@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="83.5px" height="98px" viewBox="0 0 83.5 98" enable-background="new 0 0 83.5 98" xml:space="preserve">
+<defs>
+    <filter  x="-10%" y="-10%" width="150%" height="150%" id="inset-shadow">
+    	<feFlood  result="darkFill" flood-color="black" flood-opacity="0.5"></feFlood>
+    	<feComposite  operator="in" in="darkFill" in2="SourceAlpha" result="darkAlpha"></feComposite>
+    	<feGaussianBlur  stdDeviation="2" in="darkAlpha" result="blur"></feGaussianBlur>
+    	<feOffset  dy="-2" dx="0" result="offsetBlur"></feOffset>
+    	<feComposite  operator="out" in="offsetBlur" in2="SourceAlpha" result="darkRim"></feComposite>
+    	<feOffset  dy="2" dx="0" result="offsetBlur"></feOffset>
+    	<feMerge>
+    		<feMergeNode  in="SourceGraphic"></feMergeNode>
+    		<feMergeNode></feMergeNode>
+    	</feMerge>
+    </filter>
+</defs>
+<g filter="url(#inset-shadow)">
+	<path fill="#FFFFFF" d="M38.951,79.805c-16.154-3.619-26.666-16.139-24.914-35.388C15.758,25.516,30.728,16.5,45.433,16.996
+		c11.75,0.396,24.119,8.839,25.105,24.912c0.462,7.523-2.174,14.525-6.437,18.844c-5.53,5.602-12.601,6.703-18.408,5.893
+		c-8.861-1.228-17.663-7.19-17.18-20.025c0.171-4.565,2.37-9.443,5.918-12.674c2.294-2.094,6.109-3.799,9.909-3.679
+		c4.106,0.133,7.332,2.021,9.45,4.781c3.759,4.906,3.658,12.756,3.517,13.529c0,0-0.025,0.194-0.06,0.455
+		c-0.096,0.641-0.634,1.117-1.258,1.111L36.61,50.028c-0.086-0.003-0.177,0.042-0.237,0.118c-0.06,0.074-0.091,0.176-0.076,0.264
+		c1.334,7.533,8.479,8.786,10.15,9.008c2.028,0.271,7.507,0.805,12.057-3.703c3.115-3.08,4.559-6.296,4.791-13.467
+		c0.227-6.859-5.243-18.3-20.073-18.353c-7.745-0.028-20.405,6.461-21.648,21.279c-1.228,14.565,6.814,25.618,19.701,27.849
+		c17.653,3.061,24.668-4.744,24.668-4.744c0.327-0.196,0.709-0.096,0.86,0.227l2.788,5.451c0.07,0.146,0.125,0.346,0.07,0.527
+		c-0.06,0.177-0.111,0.232-0.302,0.389C69.365,74.874,59.13,84.32,38.951,79.805z M37.244,42.264
+		c-0.055,0.128-0.081,0.264-0.031,0.379c0.051,0.114,0.161,0.187,0.283,0.187l12.354,0.091c0.096,0.002,0.191-0.043,0.262-0.124
+		c0.065-0.083,0.096-0.188,0.081-0.284c-0.191-1.155-0.559-2.312-1.268-3.221c-0.977-1.258-2.929-2.106-5.128-2.041
+		c-1.937,0.058-3.281,0.732-4.534,1.902C38.221,40.13,37.455,41.746,37.244,42.264z"/>
+</g>
+</svg>

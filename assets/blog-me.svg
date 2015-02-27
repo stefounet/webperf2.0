@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="119.5px" height="98px" viewBox="0 0 119.5 98" enable-background="new 0 0 119.5 98" xml:space="preserve">
+<filter  x="-10%" y="-10%" width="150%" height="150%" id="inset-shadow">
+	<feFlood  result="darkFill" flood-color="black" flood-opacity="0.5"></feFlood>
+	<feComposite  operator="in" in="darkFill" in2="SourceAlpha" result="darkAlpha"></feComposite>
+	<feGaussianBlur  stdDeviation="2" in="darkAlpha" result="blur"></feGaussianBlur>
+	<feOffset  dy="-2" dx="0" result="offsetBlur"></feOffset>
+	<feComposite  operator="out" in="offsetBlur" in2="SourceAlpha" result="darkRim"></feComposite>
+	<feOffset  dy="2" dx="0" result="offsetBlur"></feOffset>
+	<feMerge>
+		<feMergeNode  in="SourceGraphic"></feMergeNode>
+		<feMergeNode></feMergeNode>
+	</feMerge>
+</filter>
+<g filter="url(#inset-shadow)">
+	<path fill="#FFFFFF" d="M49.136,16.49c-20.712,0-37.503,11.264-37.503,25.166c0,7.495,4.885,14.217,12.628,18.829
+		c-1.648,3.055-4.905,6.95-11.64,12.233c-1.1,0.862-2.474,2.11,1.974,1.222c7.448-1.49,15.396-5.287,21.455-8.693
+		c4.075,1.02,8.482,1.578,13.087,1.578c20.711,0,37.502-11.267,37.502-25.167C86.639,27.754,69.847,16.49,49.136,16.49z"/>
+	<path fill="#FFFFFF" d="M110.71,79.61c-5.78-4.534-6.605-7.097-6.888-8.956c4.033-2.923,6.5-6.832,6.5-11.129
+		c0-7.998-8.532-14.649-19.817-16.096C89.569,54.869,79.641,64.343,65.472,68.5c4.363,4.463,11.882,7.412,20.431,7.412
+		c3.681,0,7.168-0.551,10.3-1.528c3.297,2.112,8.938,5.354,13.957,6.355C112.456,81.2,111.278,80.054,110.71,79.61z"/>
+</g>
+</svg>
