@@ -41,13 +41,116 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>A Fasterize presentation</h1>
-					<h3>Fasterize template</h3>
+					<h1>Underneath Webperf</h1>
+					<h3>see beyond webperf classic rules</h3>
 					<p>
 						<small>Created by Fasterize</small>
 					</p>
 				</section>
 
+        <section>
+          <section>
+            <h2>common rules limits</h2>
+            <h3>when webperf goes against webperf</h3>
+          </section>
+
+          <section>
+            <h2>Concatenation limits</h2>
+            <ul>
+              <li>1 big file slow down every pages</li>
+              <ul>
+                <li>All CSS and JS code loaded on every pages even when not needed</li>
+                <li>Cannot proritize most important code first</li>
+                <li>ex: Image Lazyloader must wait all concatenated JS code to be downloaded before being executed</li>
+              </ul>
+              <li>prevents browser caching small parts. common resource reuse? (jquery, bootstrap)</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Sharding limits</h2>
+            <ul>
+              <li>introduce new DNS resolutions</li>
+              <li>might not be a problem on "low" latency network</li>
+              <li>but change many thing on slow networks</li>
+              <li>ex: China waterfall</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Lazyloading limits</h2>
+            <ul>
+              <li>lazyloading every images is not a good idea</li>
+              <li>lazyload only bigger images below the fold</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Pushing webperf further</h2>
+          </section>
+
+          <section>
+            <h2>Cookie less cache</h2>
+
+            <ul>
+              <li>Cache dynamic pages for new/anonymous users</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Inline first view</h2>
+          </section>
+
+          <section>
+            <h2>Smart cache</h2>
+          </section>
+
+          <section>
+            <h2>Others</h2>
+
+            <ul>
+              <li>Async font loading</li>
+              <li>Fonts optimizations</li>
+              <li>unsharding</li>
+            </ul>
+          </section>
+
+        </section>
+
+        <section>
+          <section>
+            <h2>What SPDY & HTTP/2 changes to webperf common rules</h2>
+          </section>
+
+          <section>
+            <h2>remove CSS and JS concatenation</h2>
+
+            <ul>
+              <li>to help code start earlier</li>
+              <li>to maximize resource caching between pages</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>remove sharding</h2>
+
+            <ul>
+              <li>prevent many DNS resolutions</li>
+              <li>prevent slow start of new connetions</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Leverage new feature</h2>
+
+            <ul>
+              <li>Use server hints to help browser load faster vip resources</li>
+              <li>Server push is powerful when resources are not already in browser cache</li>
+            </ul>
+          </section>
+        </section>
 			</div>
 
 			<div class="icon-bar">
