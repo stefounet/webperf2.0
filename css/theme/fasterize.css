@@ -44,7 +44,9 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: white;
-  font-family: "Quicksand", sans-serif;
+  font-family:'Avenir Next', 'Arial';
+
+//  font-family: "Quicksand", sans-serif;
   line-height: 0.9em;
   letter-spacing: -0.08em;
   text-transform: uppercase;
@@ -182,12 +184,14 @@ body {
 
 .reveal .icon-bar img {
   vertical-align: middle;
+  height:30px;
 }
 
 .reveal .icon-bar a {
   text-decoration: none;
   color: #CCC;
   font-weight: 300;
+  font-family:'Avenir Next', 'Arial';
 }
 
 .reveal .icon-bar a:hover {
@@ -199,6 +203,8 @@ body {
 .reveal .icon-bar a span {
   padding-left: 0.25em;
   padding-right: 1em;
+  padding-right: 1em;
+  font-family:'Avenir Next', 'Arial';
 }
 
 ul#domainName>li {
@@ -230,4 +236,8 @@ ul#domainName>li {
 
 .reveal ul li {
   padding: 10px 0 10px 0;
+}
+
+.reveal > .backgrounds {
+  top:50px;
 }

@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>A Fasterize presentation</title>
+		<title>Webperf2.0</title>
 
 		<meta name="description" content="A Fasterize presentation">
 		<meta name="author" content="Fasterize">
@@ -41,21 +41,73 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Underneath Webperf</h1>
-					<h3>see beyond webperf classic rules</h3>
+					<h1>Webperf 2.0</h1>
+					<h3>Aller plus loin que les règles classiques</h3>
+          <br>
+          <br>
+          <br>
+          <br>
 					<p>
-						<small>Created by Fasterize</small>
+						<small>Tech2Day 2015</small>
 					</p>
 				</section>
-
         <section>
           <section>
-            <h2>common rules limits</h2>
-            <h3>when webperf goes against webperf</h3>
+            Ce dont je ne parlerai pas : inpage perf (rendering, layout, JS), backend, tls (session reuse, cache, tls record, certificate size), tcp slow start, tcp window scaling, disable slow start after idle, webrtc
+          </section>
+           <section>
+            <h2>Petite</h2><h1>introduction</h1>
+            <h3>(pour ceux qui vivraient encore dans des datacenters)</h3>
+          </section>
+          <section>
+            Faire que les sites Web se chargent plus rapidement, 
+            sur tous les navigateurs, 
+            tous les devices 
+            toutes les connexions
+            </section>
+          <section>
+            différence entre backend/frontend
+            waterfall
+          </section>
+          <section>
+            mais pourquoi on fait ça ? 
+            <aside class="notes">
+              image orangina
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Les limites des règles actuelles</h2>
+            <h3>quand la webperf va à l'encontre de la webperf</h3>
+          </section>
+          <section>
+            bible / moise / ancien testament
+            <aside class="notes">
+            Les règles de la Webperf ont été édicté par 
+            </aside>
+           </section>
+          <section>
+            nouveau testament
+          </section>
+          <section>
+            d'où elles viennent : 
+            la latence (
+            temps d'établissement de connexion (poignée de main ?
+            navigateurs
+            le protocole HTTP1.1
+          </section>
+          <section>
+            mais en fait
+            les navigateurs ont évolué en 10 ans (chrome 43?)
+            les terminaux ont changé (mobile 50% du surf : on rigolait encore y'a 3 ans quand tous les ans le gartner prévoyait que 50% du surf serait sur mobile mais on y est
+            les protocoles sont en train de changer
+            la manière de coder des sites a changé : SPA, RWD
+            les widgets ont explosé à cause des tags managers
           </section>
 
           <section>
-            <h2>Concatenation limits</h2>
+            <h2>Concatenation</h2>
             <ul>
               <li>1 big file slow down every pages</li>
               <ul>
@@ -68,7 +120,7 @@
           </section>
 
           <section>
-            <h2>Sharding limits</h2>
+            <h2>Sharding</h2>
             <ul>
               <li>introduce new DNS resolutions</li>
               <li>might not be a problem on "low" latency network</li>
@@ -78,34 +130,57 @@
           </section>
 
           <section>
-            <h2>Lazyloading limits</h2>
+            <h2>Lazyloading</h2>
             <ul>
               <li>lazyloading every images is not a good idea</li>
               <li>lazyload only bigger images below the fold</li>
             </ul>
           </section>
+          <section>
+            <h2>JS at the bottom</h2>
+          </section>
+          <section>
+            <h2>Minification</h2>
+            c'est du markete de la perf, ça enquiquinne tout le monde et personne n'a fait d'étude pour savoir si ça avait un vrai impact sur le parsing (source map)
+          </section>
         </section>
 
         <section>
           <section>
-            <h2>Pushing webperf further</h2>
+            <h2>et si on allait plus loin ?</h2>
           </section>
+        </section>
 
+        <section>
           <section>
-            <h2>Cookie less cache</h2>
+            <h2>cache cache</h2>
+          </section>
+          <section>
+            et pour commencer si on faisait plus de cache
+            <aside class="notes">
+              d'accord vous allez dire, on s'est fait avoir, webperf 2.0 mon oeil il va me dire de mettre mes pages en cache
+            </aside>
+          </section>
+          <section>
+            <h2>Cookieless cache</h2>
 
             <ul>
-              <li>Cache dynamic pages for new/anonymous users</li>
+              <li>Cacher les pages dynamiques pour les nouveaux utilisateurs ou  les utilisateurs anonymes</li>
             </ul>
           </section>
 
           <section>
-            <h2>Inline first view</h2>
+            <h2>Inline first view + critical</h2>
+
           </section>
 
           <section>
-            <h2>Smart cache</h2>
+            <h2>ESI/Ajax</h2>
           </section>
+          <section>
+            <h2>Fonts</h2>
+          </section>
+
 
           <section>
             <h2>Others</h2>
@@ -114,15 +189,35 @@
               <li>Async font loading</li>
               <li>Fonts optimizations</li>
               <li>unsharding</li>
+              <li>JS async/defer</li>
+              <li>chargement progressif</li>
             </ul>
           </section>
 
         </section>
+        
+        <section>
+          <section>
+            Pré-
+          </section>
+        </section>
 
         <section>
           <section>
-            <h2>What SPDY & HTTP/2 changes to webperf common rules</h2>
+            <h2>What HTTP/2 changes to webperf common rules</h2>
           </section>
+          <section>
+          we’re not replacing all of HTTP — the methods, status codes, and most of the headers you use today will be the same. Instead, we’re re-defining how it gets used “on the wire” so it’s more efficient, and so that it is more gentle to the Internet itself ....
+
+          New binary framing
+          ● One connection (session)
+          ● Many parallel requests (streams)
+          ● Header compression
+          ● Stream prioritization
+          ● Server push
+          
+          </section>
+
 
           <section>
             <h2>remove CSS and JS concatenation</h2>
@@ -143,12 +238,64 @@
           </section>
 
           <section>
-            <h2>Leverage new feature</h2>
+            <h2>Nouvelles fonctionnalités</h2>
 
             <ul>
               <li>Use server hints to help browser load faster vip resources</li>
               <li>Server push is powerful when resources are not already in browser cache</li>
+              <li>SDCH</li>
             </ul>
+         </section>
+        </section>
+        <section>
+          <section>
+            Et les images
+          </section>
+          <section>
+            Nouveaux formats
+          </section>
+          <section>
+            Ancien formats
+          </section>
+          <section>
+            JPG
+          </section>
+          <section>
+            GIF
+          </section>
+          <section>
+            Compressive images
+          </section>
+
+          <section>
+            Hero image
+            This is the case why I can’t wait for HTTP/2 + progressive JPEG mashup!
+
+            An HTTP/2 server can send the first few KB of the hero JPEG first (which would serve as a low-resolution placeholder), then send all the styles, scripts, etc. and resume sending the rest of the hero image last.
+
+            This way you’d avoid the blank space without noticeably slowing anything else.
+ 
+          </section>    
+        </section>
+        <section>
+          <section>
+            Nouvelles métriques
+          </section>
+        </section>
+        <section>
+          <section>
+          Conclusion
+          </section>
+          <section>
+          ce qui est toujours d'actualité
+          compression des pages : gzip, images
+          cache (expires, etags si bien configuré)
+          CDN 
+          CSS on top / deferJS
+          </section>
+           <section>
+          chargement progressif, asynchrone avec le moins de requetes DNS possible et avec un budget webperf
+
           </section>
         </section>
 			</div>
@@ -156,7 +303,7 @@
 			<div class="icon-bar">
 				<p>
 					<a class="image" href="http://www.fasterize.com" style="font-size:28px; font-family: AvenirNext-Medium,Arial,sans-serif; color: #FFF;"><img src="assets/fasterize_logo_mini_blanc.svg" class="plain"/><span class="logo_title">fasterize</span></a>
-					<a class="image" href="https://twitter.com/fasterize"><img class="plain" src="assets/tweet-me.svg" height="35"><span>twitter</span></a>
+					<a class="image" href="https://twitter.com/stefounet"><img class="plain" src="assets/tweet-me.svg" height="35"><span>twitter</span></a>
           <a class="image" href="mailto:info@fasterize.com"><img class="plain" src="assets/email-me.svg" height="35"><span>email</span></a>
           <a class="image" href="http://blog.fasterize.com/"><img class="plain" src="assets/blog-me.svg" height="35"><span>blog</span></a>
         </p>
