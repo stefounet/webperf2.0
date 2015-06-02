@@ -56,18 +56,18 @@
 				</section>
 
         <section>
+          Ce dont je ne parlerai pas : 
+          <ul style="text-align:left">
+            <li>inpage perf (rendering, layout, JS, requestAnimationFrame, web workers, memory), 
+            <li>backend, 
+            <li>TlS (session reuse, cache, tls record, certificate size), 
+            <li>TCP (slow start, tcp window scaling, disable slow start after idle), 
+            <li>WebRTC
+            <li>resources timing, navigation timing
+          </ul>
+        </section>
 
-          <section>
-            Ce dont je ne parlerai pas : 
-            <ul style="text-align:left">
-              <li>inpage perf (rendering, layout, JS, requestAnimationFrame, web workers, memory), 
-              <li>backend, 
-              <li>tls (session reuse, cache, tls record, certificate size), 
-              <li>tcp (slow start, tcp window scaling, disable slow start after idle), 
-              <li>webrtc
-              <li>resources timing, navigation timing
-            </ul>
-          </section>
+        <section>
 
            <section>
             <h2>Petite</h2><h1>introduction</h1>
@@ -100,8 +100,7 @@
             </aside>
           </section>
 
-          <section data-transition="fast">
-            <img src="assets/wait.png">
+          <section data-transition="fast" data-background="assets/wait.jpg">
             <aside class="notes">
               et donc ça a un impact sur le business
               Y'a beaucoup d'études dont le fameux 100ms d'amazon qui montrent qu'il y a un impact négatif sur le business quand on ralentit un site web
@@ -111,17 +110,17 @@
           </section>
 
           <section data-transition="fast">
-            <img src="assets/conversion rate vs loadtime.png">
+            <img src="assets/conversion rate vs loadtime.jpg">
           </section>
 
           <section data-transition="fast">
-            <img src="assets/pageviews vs loadtime.png">
+            <img src="assets/pageviews vs loadtime.jpg">
             <aside class="notes">
               et pour ceux qui se posent la question, ce n'est pas près de s'arrêter 
             </aside>
            </section>
 
-          <section>
+          <section data-transition="fast">
              <img src="assets/evolution size.png">
             <aside class="notes">
               mais heureusement y'a des règles qui existent pour améliorer les perfs
@@ -142,7 +141,7 @@
           </section>
 
           <section>
-            <img class="" src="assets/Moise.png" width="500" align="left" style="margin-bottom:400px;margin-right:50px">
+            <img class="" src="assets/Moise.jpg" width="500" align="left" style="margin-bottom:400px;margin-right:50px">
             <ul style="text-align:left;font-size:0.7em">
               <li>Make Fewer HTTP Requests
               <li>Use a Content Delivery Network
@@ -165,7 +164,7 @@
           </section>
 
           <section>
-            <img class="" src="assets/nouveau testament.png" width="400" align="left" style="margin-bottom:400px;margin-right:50px">
+            <img class="" src="assets/nouveau testament.jpg" width="400" align="left" style="margin-bottom:400px;margin-right:50px">
             <ul class="bullets" style="font-size:0.7em">
               <li>Ajax
               <li>Responsive Web
@@ -184,24 +183,30 @@
 
           <section>
             d'où elles viennent : 
-            <ul class="bullets">
+
+            <ul>
               <li class="fragment">latence</li>
-              <li class="fragment">temps d'établissement de connexion TCP</li>
+              <li class="fragment">TCP (handshake, slow start)</li>
               <li class="fragment">limites des navigateurs</li>
               <li class="fragment">HTTP1.1</li>
+              <li class="fragment">un monde cablé</li>
             </ul>
             <aside class="notes">ce qui n'a pas disparu : latence et TCP</aside>
           </section>
 
           <section>
             mais en fait
-            <ul class="bullets">
-              <li>les navigateurs ont évolué en 10 ans (chrome 43?)
-              <li>les terminaux ont changé 
-              <li>les protocoles sont en train de changer (SPDY/HTTP2, QUIC)
-              <li>la manière de coder des sites a changé : SPA, RWD
-              <li>les widgets ont explosé à cause des tags managers
+            <ul>
+              <li class="fragment">les navigateurs ont évolué en 10 ans (chrome 43?)</li>
+              <li class="fragment">les terminaux ont changé </li>
+              <li class="fragment">les protocoles sont en train de changer (SPDY/HTTP2)</li>
+              <li class="fragment">même les couches réseaux sont remises en cause (QUIC)</li>
             </ul>
+            <ul class="fragment">
+              <li>la manière de coder des sites a changé : SPA, RWD</li>
+              <li>les widgets ont explosé à cause des tags managers</li>
+            </ul>
+
             <aside class="notes">
               le mobile représente 50% du surf : on rigolait encore y'a 3 ans quand tous les ans le gartner prévoyait que 50% du surf serait sur mobile mais on y est
             </aside>
@@ -209,42 +214,75 @@
 
           <section>
             <h2>Concatenation</h2>
-            <ul>
-              <li>1 big file slow down every pages</li>
-              <ul>
-                <li>All CSS and JS code loaded on every pages even when not needed</li>
-                <li>Cannot proritize most important code first</li>
-                <li>ex: Image Lazyloader must wait all concatenated JS code to be downloaded before being executed</li>
-              </ul>
-              <li>prevents browser caching small parts. common resource reuse? (jquery, bootstrap)</li>
-            </ul>
-          </section>
+            <span class="fragment">JS / CSS</span><span class="fragment">, Images</span>
+            <ol>
+              <li class="fragment">un seul gros fichier peut ralentir la page</li>
+              <li class="fragment">on tape les limites d'IE</li>
+              <li class="fragment">impossible d'établir une priorité dans le code téléchargé</li>
+              <li class="fragment">ça pète le cache (et le flush est plus contraignant)</li>
+              <li class="fragment">maintenabilité</li>
+            </ol>
+            <span class="fragment">Trouver un intermédiaire en fonction de la taille et de la composition du site.</span>
+
+            <aside class="notes">
+              La concaténation vient de deux choses : nb de requêtes possibles en parallèle, latence, connexion TCP 
+              1. surtout le cas pour les ressrouces bloquantes. J'ai déjà croisé des CSS de 1Mo
+              Le plus énervant c'est quand GTMetrix ou WPT vous dit que vous n'avez pas combiné vos CSS/JS : mais c'est ça que je veux faire !
+            </aside>
+            </section>
 
           <section>
-            <h2>Sharding</h2>
-            <ul>
-              <li>introduce new DNS resolutions</li>
-              <li>might not be a problem on "low" latency network</li>
-              <li>but change many thing on slow networks</li>
-              <li>ex: China waterfall</li>
-            </ul>
+            <h2>Sharding / Cookieless domain</h2>
+            <ol>
+              <li>introduit de nouvelles résolutions DNS, en général dans le head</li>
+              <li>"low" vs high latency network</li>
+            </ol>
+
+            <aside class="notes">
+              Définition du sharding/cookieless domain
+              ça vient de deux choses : nb de requêtes possibles en parallèle, upload limité, pas de compression des headers 
+              mais aujourd'hui les navigateurs sont passés de 2 à 6 requêtes en // par domaine
+              low : mobile ou Chine
+              deja vu : 4 ou 5 domaines statiques différents
+              heureusement certains navigateurs détectent que c'est le même serveur derrière et ne refont pas de connexion TCP
+            </aside>
+            </section>
+
           </section>
 
           <section>
             <h2>Lazyloading</h2>
             <ul>
-              <li>lazyloading every images is not a good idea</li>
-              <li>lazyload only bigger images below the fold</li>
+              <li>Lazyloader les premières images est une mauvaise idée !</li>
+              <li>A réserver aux images en dessous de la ligne de flottaison</li>
             </ul>
+
+            <aside class="notes">
+              l'explication est simple : le préparser/preloader/speculative parser va chercher les élements en avance de phase avant de construire le DOM
+              en faisant du lazyloading, on masque les images à ce preloader et on délègue le chargement à un script qui va s'exécuter assez tard
+            </aside>
           </section>
 
           <section>
             <h2>JS at the bottom</h2>
-          </section>
+
+            <aside class="notes">
+              l'explication est la même : le préparser/preloader/speculative parser va chercher les élements en avance de phase avant de construire le DOM
+              c'est assez amusant de voir le JS tout en bas de page sortir en seconde requête :-)
+            </aside>
+           </section>
 
           <section>
             <h2>Minification</h2>
-            c'est du markete de la perf, ça enquiquinne tout le monde et personne n'a fait d'étude pour savoir si ça avait un vrai impact sur le parsing (source map)
+            <ul>
+              <li class="fragment">aucun gain</li>
+              <li class="fragment">sauf si on minifie de façon agressive</li>
+              <li class="fragment">personne le fait parce que c'est trop dangereux</li>
+            </ul>
+
+            <aside class="notes">
+              c'est du markete de la perf, ça enquiquinne tout le monde et personne n'a fait d'étude pour savoir si ça avait un vrai impact sur le parsing (source map)
+            </aside>
           </section>
 
         </section>
@@ -430,7 +468,7 @@
 
 			</div>
 
-			<div class="icon-bar">
+			<div class="icon-bar" style="width:100%">
 					<a class="image" href="http://www.fasterize.com" style="font-size:28px; font-family: AvenirNext-Medium,Arial,sans-serif; color: #FFF;"><img src="assets/fasterize_logo_mini_blanc.svg" class="plain"/><span class="logo_title">fasterize</span></a>
           <div align="right" style="float:right">
 					<a class="image" href="https://twitter.com/stefounet"><span>twitter</span></a>|

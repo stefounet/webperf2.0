@@ -33,7 +33,7 @@ body {
   background: #134674;
   text-shadow: none; }
 
-.reveal section ul {
+.reveal section ul, .reveal section ol {
   text-align:left;
 }
 
@@ -52,7 +52,7 @@ body {
 
 //  font-family: "Quicksand", sans-serif;
   line-height: 0.9em;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.06em;
   text-transform: uppercase;
   text-shadow: none; }
 
@@ -178,6 +178,8 @@ body {
 }
 
 .reveal .icon-bar {
+  z-index:1000;
+  position:absolute;
   margin-left: 0.5em;
   margin-top: 0.3em;
 }
@@ -243,5 +245,4 @@ ul#domainName>li {
 }
 
 .reveal > .backgrounds {
-  top:50px;
 }
