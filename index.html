@@ -48,7 +48,7 @@
           <br>
           <br>
 					<p>
-						<small>Tech2Day 2015</small>
+						<h2>Tech2Day 2015</h2>
 					</p>
 					<p>
 						<small>@stefounet</small>
@@ -60,7 +60,7 @@
           <ul style="text-align:left">
             <li>in-page perf (rendering, layout, JS, requestAnimationFrame, web workers, memory), 
             <li>backend, 
-            <li>TlS (session reuse, cache, tls record, certificate size), 
+            <li>TLS (session reuse, cache, tls record, certificate size), 
             <li>TCP (slow start, tcp window scaling, disable slow start after idle), 
             <li>WebRTC
             <li>resources timing, navigation timing
@@ -72,6 +72,12 @@
            <section>
             <h2>Petite</h2><h1>introduction</h1>
             <h3>(pour ceux qui vivraient encore dans des datacenters)</h3>
+
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
           <section>
@@ -83,48 +89,74 @@
 
           <section>
             <h2>backend/frontend</h2>
-            <img src="assets/waterfall.png" width="600">  
+            <img src="assets/waterfall.png" width="600"> 
+ 
+            <aside class="notes">
+              On peut agir à deux niveaux : backend et frontend
+              Je parlerai essentiellement de frontend
+              Vous savez tous ce qu'est un waterfall ?
+            </aside>
+
           </section>
 
           <section>
             mais pourquoi on fait ça ? 
+
             <aside class="notes">
               en ce qui me concerne c'est parce que j'ai codé en 1982 sur un ZX Spectrum avec 16Ko de RAM et aussi parce que j'ai un business là dessus ;-)
+              mais sinon ...
             </aside>
+
           </section>
 
           <section>
             <img src="assets/parce que.jpg">
+
             <aside class="notes">
-            et sinon pour de vrai, ben c'est pour les utilisateurs, parce qu'on n'aime pas attendre 
+            ah, et sinon pour de vrai, ben c'est pour les utilisateurs, parce qu'on n'aime pas attendre 
             </aside>
+
           </section>
 
           <section data-transition="fast" data-background="assets/wait.jpg">
+
             <aside class="notes">
-              et donc ça a un impact sur le business
-              Y'a beaucoup d'études dont le fameux 100ms d'amazon qui montrent qu'il y a un impact négatif sur le business quand on ralentit un site web
-              De notre côté, nous on a montré l'inverse : qu'il y avait un impact positif quand on accélérait un site ! 
-              Par exemple, on voit la corrélation chez un client dans le secteur de la mode.
+              <p>et donc ça a un impact sur le business
+              <p>Y'a beaucoup d'études dont le fameux 100ms d'amazon qui montrent qu'il y a un impact négatif sur le business quand on ralentit un site web
+              <p>De notre côté, nous on a montré l'inverse : qu'il y avait un impact positif quand on accélérait un site ! 
+              <p>Par exemple, on voit la corrélation chez un client dans le secteur de la mode.
             </aside>
+
           </section>
 
           <section data-transition="fast">
             <img src="assets/conversion rate vs loadtime.jpg">
+ 
+            <aside class="notes">
+              distribution des temps de chargement vs le taux de conversion et on voit donc clairement qu'un internaute qui charge le site rapidement transforme mieux.
+              A noter que cette distribution n'est pas une gaussienne et donc mesurer des moyennes de temps de chargement n'est pas très pertinent dans notre métier
+            </aside>
+
           </section>
 
           <section data-transition="fast">
             <img src="assets/pageviews vs loadtime.jpg">
+
             <aside class="notes">
               et pour ceux qui se posent la question, ce n'est pas près de s'arrêter 
+              <p>ça montre l'évolution du poids et de la complexité des pages depuis environ 4 ans
+              <p> on est passé de 700ko a 2Mo
             </aside>
+
            </section>
 
           <section data-transition="fast">
              <img src="assets/evolution size.png">
+
             <aside class="notes">
               mais heureusement y'a des règles qui existent pour améliorer les perfs
             </aside>
+
           </section>
 
         </section>
@@ -136,8 +168,9 @@
             <h3>quand la webperf va à l'encontre de la webperf</h3>
 
             <aside class="notes">
-              Les règles de la Webperf ont été édicté en 2007 par Steve Moise Souders 
+              Les règles de la Webperf ont été édicté en 2007 par Steve Moise Souders dans un bouquin appelé "High Performance Websites"
             </aside>
+
           </section>
 
           <section>
@@ -158,9 +191,12 @@
               <li>Configure ETags
               <li>Make AJAX Cacheable
             </ul>
+
             <aside class="notes">
               Elles ont été complétées et affinées au fur et à mesure
+              dans un second bouquin, collectif celui-là, "Even Faster websites"
             </aside>
+
           </section>
 
           <section>
@@ -179,6 +215,11 @@
               <li>Simplify CSS selectors
             </ul>
 
+            <aside class="notes">
+              Mais pourquoi ces règles existent, d'où elles sortent ?
+            </aside>
+
+ 
          </section>
 
           <section>
@@ -189,15 +230,23 @@
               <li class="fragment">TCP (handshake, slow start)</li>
               <li class="fragment">limites des navigateurs</li>
               <li class="fragment">HTTP1.1</li>
-              <li class="fragment">un monde cablé</li>
+              <li class="fragment">im-mobile</li>
             </ul>
-            <aside class="notes">ce qui n'a pas disparu : latence et TCP</aside>
+
+            <aside class="notes">
+            <li>la latence, schématiquement c'est la longueur du tuyau, le fait qu'on doive forcément parcourir une distance pour transporter une informtation
+            <li>le protocole TCP, c'est la couche de transport de nos réseaux, celle qui s'assure qu'on reçoit bien ce qui a été envoyé
+            <li>les navigateurs, ben si vous avez connu un monde avec IE5.5, vous savez qu'il y en a des limites
+            <li>le protocole HTTP1.1 a des limitations sur la façon de se connecter, on peut dire qu'il est pas très connecté et en plus il est sujet a mille interprétations
+            <li>enfin tout ça a été rédigé en 2006, lancement du premier iphone : 2007
+            </aside>
+
           </section>
 
           <section>
-            mais en fait
+            <p>mais en fait, aujourd'hui</p>
             <ul>
-              <li class="fragment">les navigateurs ont évolué en 10 ans (chrome 43?)</li>
+              <li class="fragment">les navigateurs ont évolué en 10 ans (Firefox 38!)</li>
               <li class="fragment">les terminaux ont changé </li>
               <li class="fragment">les protocoles sont en train de changer (SPDY/HTTP2)</li>
               <li class="fragment">même les couches réseaux sont remises en cause (QUIC)</li>
@@ -211,6 +260,16 @@
             <aside class="notes">
               le mobile représente 50% du surf : on rigolait encore y'a 3 ans quand tous les ans le gartner prévoyait que 50% du surf serait sur mobile mais on y est
             </aside>
+
+          </section>
+
+          <section data-background="assets/widgets.jpg">
+
+             <aside class="notes">
+              ce qui n'a pas disparu : latence
+              <p>et donc ça conduit à une situation où les règles classiques de la webperf, celles que tout le monde connait, sont devenues dans certains cas contre productives !
+            </aside>
+
           </section>
 
           <section>
@@ -225,13 +284,15 @@
               <li class="fragment">ça pète le cache (et le flush est plus contraignant)</li>
               <li class="fragment">maintenabilité</li>
             </ol>
-            <span class="fragment">Trouver un intermédiaire en fonction de la taille et de la composition du site.</span>
+            <p class="fragment">Trouver un intermédiaire en fonction de la taille et de la composition du site.</p>
 
             <aside class="notes">
+              ça concerne les JS et les CSS mais aussi les images avec la technique du spriting
               La concaténation vient de deux choses : nb de requêtes possibles en parallèle, latence, connexion TCP 
               1. surtout le cas pour les ressrouces bloquantes. J'ai déjà croisé des CSS de 1Mo
               Le plus énervant c'est quand GTMetrix ou WPT vous dit que vous n'avez pas combiné vos CSS/JS : mais c'est ça que je veux faire !
             </aside>
+
           </section>
 
           <section>
@@ -249,6 +310,7 @@
               deja vu : 4 ou 5 domaines statiques différents
               heureusement certains navigateurs détectent que c'est le même serveur derrière et ne refont pas de connexion TCP
             </aside>
+
           </section>
 
           <section>
@@ -262,6 +324,7 @@
               l'explication est simple : le préparser/preloader/speculative parser va chercher les élements en avance de phase avant de construire le DOM
               en faisant du lazyloading, on masque les images à ce preloader et on délègue le chargement à un script qui va s'exécuter assez tard
             </aside>
+
           </section>
 
           <section>
@@ -271,6 +334,7 @@
               l'explication est la même : le préparser/preloader/speculative parser va chercher les élements en avance de phase avant de construire le DOM
               c'est assez amusant de voir le JS tout en bas de page sortir en seconde requête :-)
             </aside>
+
            </section>
 
           <section>
@@ -284,6 +348,7 @@
             <aside class="notes">
               c'est du markete de la perf, ça enquiquinne tout le monde et personne n'a fait d'étude pour savoir si ça avait un vrai impact sur le parsing (source map)
             </aside>
+
           </section>
 
         </section>
@@ -292,6 +357,12 @@
 
           <section>
             <h1>et si on allait plus loin ?</h1>
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
         </section>
@@ -305,6 +376,7 @@
             <aside class="notes">
               d'accord vous allez dire, on s'est fait avoir, webperf 2.0 mon oeil il va me dire de mettre mes pages en cache
             </aside>
+
           </section>
 
           <section>
@@ -313,6 +385,12 @@
             <ul>
               <li>Cacher les pages dynamiques pour les nouveaux utilisateurs ou  les utilisateurs anonymes</li>
             </ul>
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
           <section>
@@ -320,6 +398,12 @@
             <ul>
               <li>Cacher les pages HTML et ajouter les parties dynamiques en Ajax ou en ESI</li>
             </ul>
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
         </section>
@@ -328,6 +412,12 @@
 
           <section>
             <h1>Chargement progressif</h1>
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
           <section>
@@ -335,27 +425,66 @@
 
             <ul>
               <li>Async font loading</li>
-              <li>Inline first view + critical</li>
-              <li>JS async/defer</li>
+              <li>Inline critical CSS/JS + async loading</li>
+              <li>Inline first view</li>
+              <li>JS async/defer/iframe</li>
             </ul>
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
         </section>
         
         <section>
+
           <section>
            <h1>Pré-</h1>
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
+
+          <section>
+            <h2>3 type</h2>
+            <h3>preconnect, prefetch, prerender</h3>
+           <ul>
+             <li>pas très bien supporté</li>
+             <li>accessible en &lt;link&gt; ou en header Link:</li>
+             <li>des fois accessible via JS</li>
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
+          </section>
+
         </section>
 
         <section>
 
           <section>
-            <h2>What HTTP/2 changes to webperf common rules</h2>
+            <h2>HTTP2 est arrrrivé</h2>
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
           <section>
-          "we’re not replacing all of HTTP — the methods, status codes, and most of the headers you use today will be the same. Instead, we’re re-defining how it gets used “on the wire” so it’s more efficient, and so that it is more gentle to the Internet itself ...." -- @mnot
+          <p class="quote">"we’re not replacing all of HTTP — the methods, status codes, and most of the headers you use today will be the same. Instead, we’re re-defining how it gets used “on the wire” so it’s more efficient, and so that it is more gentle to the Internet itself ...." — @mnot</p>
+            <br>
+            <img src="assets/http2_2.png">
+            <img src="assets/http2_1.png">
             <ul>
               <li>New binary framing</li>
               <li>One connection (session)</li>
@@ -364,8 +493,15 @@
               <li>Stream prioritization</li>
               <li>Server push</li>
             </ul> 
-          </section>
 
+            <aside class="notes">
+              qu'est-ce que ça veut dire du coup ?
+              une requête n'est pas obligé d'attendre une réponse pour se lancer 
+              le serveur (donc l'application) peut décider quelles resources sont prioritaires et les prioriser dans le flux
+              le serveur peut envoyer des resources qui n'ont pas encore été requêtées (avec un mécanisme d'annulation possible si le navigateur l'a dans le cache
+            </aside>
+
+          </section>
 
           <section>
             <h2>remove CSS and JS concatenation</h2>
@@ -374,6 +510,12 @@
               <li>to help code start earlier</li>
               <li>to maximize resource caching between pages</li>
             </ul>
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
           <section>
@@ -383,6 +525,12 @@
               <li>prevent many DNS resolutions</li>
               <li>prevent slow start of new connetions</li>
             </ul>
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
           <section>
@@ -393,6 +541,12 @@
               <li>Server push is powerful when resources are not already in browser cache</li>
               <li>SDCH</li>
             </ul>
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
          </section>
 
         </section>
@@ -405,6 +559,12 @@
               <li>Service workers</li>
               <li>Timeout sync scripts</li>
             </ul>
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
          </section>
 
         </section>
@@ -412,27 +572,65 @@
         <section>
 
           <section>
-            Et les images
+            <h1>Et les images</h1>
+            <img src="assets/repartition poids des pages.png">
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
           <section>
-            Nouveaux formats
+          <h2>Nouveaux formats</h2>
+          <h3>JPG 2000, JPG-XR, WebP
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
           <section>
             Ancien formats
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
           <section>
             JPG
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
           <section>
             GIF
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
           <section>
             Compressive images
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
           <section>
@@ -443,6 +641,12 @@
 
             This way you’d avoid the blank space without noticeably slowing anything else.
  
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>    
 
         </section>
@@ -451,6 +655,12 @@
 
           <section>
             Nouvelles métriques
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
         </section>
@@ -459,6 +669,12 @@
 
           <section>
           Conclusion
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
           <section>
@@ -467,10 +683,22 @@
           cache (expires, etags si bien configuré)
           CDN 
           CSS on top / deferJS
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
+
           </section>
 
            <section>
           chargement progressif, asynchrone avec le moins de requetes DNS possible et avec un budget webperf
+
+ 
+            <aside class="notes">
+              Rapidement, c'est quoi la webperf ?<br>
+              Moi j'ai une définition simple
+            </aside>
 
           </section>
 

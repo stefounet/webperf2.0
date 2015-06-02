@@ -35,10 +35,16 @@ body {
 
 .reveal section ul, .reveal section ol {
   text-align:left;
+  margin-top:10px;
+  margin-bottom:10px;
 }
 
 .reveal section ul li, .reveal section ol li {
   line-height:1.2em;
+}
+
+.reveal section .quote {
+  font-size:.9em;
 }
 
 /*********************************************
