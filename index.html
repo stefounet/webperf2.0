@@ -54,7 +54,9 @@
 						<small>@stefounet</small>
 					</p>
 				</section>
+
         <section>
+
           <section>
             Ce dont je ne parlerai pas : 
             <ul style="text-align:left">
@@ -65,53 +67,75 @@
               <li>webrtc
             </ul>
           </section>
+
            <section>
             <h2>Petite</h2><h1>introduction</h1>
             <h3>(pour ceux qui vivraient encore dans des datacenters)</h3>
           </section>
+
           <section>
             Faire que les sites Web se chargent plus rapidement, 
             <span class="fragment">sur tous les navigateurs,</span> 
             <span class="fragment">tous les devices,</span> 
             <span class="fragment">toutes les connexions</span>
-            </section>
+          </section>
+
           <section>
             <h2>backend/frontend</h2>
             <img src="assets/waterfall.png" width="600">  
           </section>
+
           <section>
             mais pourquoi on fait ça ? 
             <aside class="notes">
+              en ce qui me concerne c'est parce que j'ai codé en 1982 sur un ZX Spectrum avec 16Ko de RAM et aussi parce que j'ai un business là dessus ;-)
             </aside>
           </section>
+
           <section>
             <img src="assets/parce que.jpg">
             <aside class="notes">
             et sinon pour de vrai, ben c'est pour les utilisateurs, parce qu'on n'aime pas attendre 
             </aside>
           </section>
-          <section>
-            <img src="assets/wait.jpg">
+
+          <section data-transition="fast">
+            <img src="assets/wait.png">
             <aside class="notes">
-            et donc ça a un impact sur le business
-            Y'a beaucoup d'études dont le fameux 100ms d'amazon qui montrent qu'il y a un impact négatif sur le business quand on ralentit un site web
-            De notre côté, nous on a montré l'inverse : qu'il y avait un impact positif quand on accélérait un site ! 
-            Par exemple, on voit la corrélation chez un client dans le secteur de la mode.
+              et donc ça a un impact sur le business
+              Y'a beaucoup d'études dont le fameux 100ms d'amazon qui montrent qu'il y a un impact négatif sur le business quand on ralentit un site web
+              De notre côté, nous on a montré l'inverse : qu'il y avait un impact positif quand on accélérait un site ! 
+              Par exemple, on voit la corrélation chez un client dans le secteur de la mode.
             </aside>
           </section>
-           <section data-transition="fast">
 
-          <img src="assets/conversion rate vs loadtime.png">
-          </section>
           <section data-transition="fast">
-          <img src="assets/pageviews vs loadtime.png">
+            <img src="assets/conversion rate vs loadtime.png">
           </section>
-         </section>
+
+          <section data-transition="fast">
+            <img src="assets/pageviews vs loadtime.png">
+            <aside class="notes">
+              et pour ceux qui se posent la question, ce n'est pas près de s'arrêter 
+            </aside>
+           </section>
+
+          <section>
+             <img src="assets/evolution.png">
+            <aside class="notes">
+              mais heureusement y'a des règles qui existent pour améliorer les perfs
+            </aside>
+          </section>
+
+        </section>
+
         <section>
+
           <section>
             <h1>Les limites des règles actuelles</h1>
             <h3>quand la webperf va à l'encontre de la webperf</h3>
           </section>
+
           <section>
             <img class="" src="assets/Moise.png" width="500" align="left" style="margin-bottom:400px;margin-right:50px">
             <ul style="text-align:left;font-size:0.7em">
@@ -132,28 +156,57 @@
             </ul>
 
             <aside class="notes">
-            Les règles de la Webperf ont été édicté par 
+              Les règles de la Webperf ont été édicté en 2007 par Steve Moise Souders 
             </aside>
            </section>
+
           <section>
-            
-            nouveau testament
+            <img class="" src="assets/nouveau testament.png" width="500" align="left" style="margin-bottom:400px;margin-right:50px">
+            <ul class="bullets" style="font-size:0.7em">
+              <li>Make Fewer HTTP Requests
+              <li>Use a Content Delivery Network
+              <li>Add an Expires Header
+              <li>Gzip Components
+              <li>Put Stylesheets at the Top
+              <li>Put Scripts at the Bottom
+              <li>Avoid CSS Expressions
+              <li>Make JavaScript and CSS External
+              <li>Reduce DNS Lookups
+              <li>Minify JavaScript
+              <li>Avoid Redirects
+              <li>Remove Duplicate Scripts
+              <li>Configure ETags
+              <li>Make AJAX Cacheable
+            </ul>
+
+            <aside class="notes">
+              Les règles de la Webperf ont été édicté en 2007 par Steve Moise Souders 
+            </aside>
           </section>
+
           <section>
             d'où elles viennent : 
-            la latence
-            temps d'établissement de connexion (poignée de main ?
-            navigateurs
-            le protocole HTTP1.1
+            <ul class="bullets">
+              <li>latence
+              <li>temps d'établissement de connexion TCP
+              <li>limites des navigateurs
+              <li>HTTP1.1
+            </ul>
             <aside class="notes">ce qui n'a pas disparu : latence et TCP</aside>
           </section>
+
           <section>
             mais en fait
-            les navigateurs ont évolué en 10 ans (chrome 43?)
-            les terminaux ont changé (mobile 50% du surf : on rigolait encore y'a 3 ans quand tous les ans le gartner prévoyait que 50% du surf serait sur mobile mais on y est
-            les protocoles sont en train de changer
-            la manière de coder des sites a changé : SPA, RWD
-            les widgets ont explosé à cause des tags managers
+            <ul class="bullets">
+              <li>les navigateurs ont évolué en 10 ans (chrome 43?)
+              <li>les terminaux ont changé 
+              <li>les protocoles sont en train de changer (SPDY/HTTP2, QUIC)
+              <li>la manière de coder des sites a changé : SPA, RWD
+              <li>les widgets ont explosé à cause des tags managers
+            </ul>
+            <aside class="notes">
+              le mobile représente 50% du surf : on rigolait encore y'a 3 ans quand tous les ans le gartner prévoyait que 50% du surf serait sur mobile mais on y est
+            </aside>
           </section>
 
           <section>
@@ -186,31 +239,39 @@
               <li>lazyload only bigger images below the fold</li>
             </ul>
           </section>
+
           <section>
             <h2>JS at the bottom</h2>
           </section>
+
           <section>
             <h2>Minification</h2>
             c'est du markete de la perf, ça enquiquinne tout le monde et personne n'a fait d'étude pour savoir si ça avait un vrai impact sur le parsing (source map)
           </section>
+
         </section>
 
         <section>
+
           <section>
             <h2>et si on allait plus loin ?</h2>
           </section>
+
         </section>
 
         <section>
+
           <section>
             <h2>cache cache</h2>
           </section>
+
           <section>
             et pour commencer si on faisait plus de cache
             <aside class="notes">
               d'accord vous allez dire, on s'est fait avoir, webperf 2.0 mon oeil il va me dire de mettre mes pages en cache
             </aside>
           </section>
+
           <section>
             <h2>Cookieless cache</h2>
 
@@ -227,6 +288,7 @@
           <section>
             <h2>ESI/Ajax</h2>
           </section>
+
           <section>
             <h2>Fonts</h2>
           </section>
@@ -253,9 +315,11 @@
         </section>
 
         <section>
+
           <section>
             <h2>What HTTP/2 changes to webperf common rules</h2>
           </section>
+
           <section>
           we’re not replacing all of HTTP — the methods, status codes, and most of the headers you use today will be the same. Instead, we’re re-defining how it gets used “on the wire” so it’s more efficient, and so that it is more gentle to the Internet itself ....
 
@@ -296,23 +360,31 @@
               <li>SDCH</li>
             </ul>
          </section>
+
         </section>
+
         <section>
+
           <section>
             Et les images
           </section>
+
           <section>
             Nouveaux formats
           </section>
+
           <section>
             Ancien formats
           </section>
+
           <section>
             JPG
           </section>
+
           <section>
             GIF
           </section>
+
           <section>
             Compressive images
           </section>
@@ -326,16 +398,23 @@
             This way you’d avoid the blank space without noticeably slowing anything else.
  
           </section>    
+
         </section>
+
         <section>
+
           <section>
             Nouvelles métriques
           </section>
+
         </section>
+
         <section>
+
           <section>
           Conclusion
           </section>
+
           <section>
           ce qui est toujours d'actualité
           compression des pages : gzip, images
@@ -343,11 +422,14 @@
           CDN 
           CSS on top / deferJS
           </section>
+
            <section>
           chargement progressif, asynchrone avec le moins de requetes DNS possible et avec un budget webperf
 
           </section>
+
         </section>
+
 			</div>
 
 			<div class="icon-bar">
