@@ -60,11 +60,12 @@
           <section>
             Ce dont je ne parlerai pas : 
             <ul style="text-align:left">
-              <li>inpage perf (rendering, layout, JS), 
+              <li>inpage perf (rendering, layout, JS, requestAnimationFrame, web workers, memory), 
               <li>backend, 
               <li>tls (session reuse, cache, tls record, certificate size), 
               <li>tcp (slow start, tcp window scaling, disable slow start after idle), 
               <li>webrtc
+              <li>resources timing, navigation timing
             </ul>
           </section>
 
@@ -121,7 +122,7 @@
            </section>
 
           <section>
-             <img src="assets/evolution.png">
+             <img src="assets/evolution size.png">
             <aside class="notes">
               mais heureusement y'a des règles qui existent pour améliorer les perfs
             </aside>
@@ -134,6 +135,10 @@
           <section>
             <h1>Les limites des règles actuelles</h1>
             <h3>quand la webperf va à l'encontre de la webperf</h3>
+
+            <aside class="notes">
+              Les règles de la Webperf ont été édicté en 2007 par Steve Moise Souders 
+            </aside>
           </section>
 
           <section>
@@ -154,43 +159,36 @@
               <li>Configure ETags
               <li>Make AJAX Cacheable
             </ul>
-
             <aside class="notes">
-              Les règles de la Webperf ont été édicté en 2007 par Steve Moise Souders 
-            </aside>
-           </section>
-
-          <section>
-            <img class="" src="assets/nouveau testament.png" width="500" align="left" style="margin-bottom:400px;margin-right:50px">
-            <ul class="bullets" style="font-size:0.7em">
-              <li>Make Fewer HTTP Requests
-              <li>Use a Content Delivery Network
-              <li>Add an Expires Header
-              <li>Gzip Components
-              <li>Put Stylesheets at the Top
-              <li>Put Scripts at the Bottom
-              <li>Avoid CSS Expressions
-              <li>Make JavaScript and CSS External
-              <li>Reduce DNS Lookups
-              <li>Minify JavaScript
-              <li>Avoid Redirects
-              <li>Remove Duplicate Scripts
-              <li>Configure ETags
-              <li>Make AJAX Cacheable
-            </ul>
-
-            <aside class="notes">
-              Les règles de la Webperf ont été édicté en 2007 par Steve Moise Souders 
+              Elles ont été complétées et affinées au fur et à mesure
             </aside>
           </section>
 
           <section>
+            <img class="" src="assets/nouveau testament.png" width="400" align="left" style="margin-bottom:400px;margin-right:50px">
+            <ul class="bullets" style="font-size:0.7em">
+              <li>Ajax
+              <li>Responsive Web
+              <li>Split initial payload
+              <li>Defer JS (non blocking, async)
+              <li>Inline scripts position
+              <li>Minify HTML
+              <li>Optimize images
+              <li>Sharding
+              <li>Flush the document early
+              <li>Use iFrame sparingly
+              <li>Simplify CSS selectors
+            </ul>
+
+         </section>
+
+          <section>
             d'où elles viennent : 
             <ul class="bullets">
-              <li>latence
-              <li>temps d'établissement de connexion TCP
-              <li>limites des navigateurs
-              <li>HTTP1.1
+              <li class="fragment">latence</li>
+              <li class="fragment">temps d'établissement de connexion TCP</li>
+              <li class="fragment">limites des navigateurs</li>
+              <li class="fragment">HTTP1.1</li>
             </ul>
             <aside class="notes">ce qui n'a pas disparu : latence et TCP</aside>
           </section>
@@ -433,12 +431,12 @@
 			</div>
 
 			<div class="icon-bar">
-				<p>
 					<a class="image" href="http://www.fasterize.com" style="font-size:28px; font-family: AvenirNext-Medium,Arial,sans-serif; color: #FFF;"><img src="assets/fasterize_logo_mini_blanc.svg" class="plain"/><span class="logo_title">fasterize</span></a>
-					<a class="image" href="https://twitter.com/stefounet"><img class="plain" src="assets/tweet-me.svg" height="35"><span>twitter</span></a>
-          <a class="image" href="mailto:info@fasterize.com"><img class="plain" src="assets/email-me.svg" height="35"><span>email</span></a>
-          <a class="image" href="http://blog.fasterize.com/"><img class="plain" src="assets/blog-me.svg" height="35"><span>blog</span></a>
-        </p>
+          <div align="right" style="float:right">
+					<a class="image" href="https://twitter.com/stefounet"><span>twitter</span></a>|
+          <a class="image" href="mailto:info@fasterize.com"><span>email</span></a>|
+          <a class="image" href="http://blog.fasterize.com/"><span>blog</span></a>
+        </div>
 			</div>
 
 		</div>
