@@ -50,10 +50,20 @@
 					<p>
 						<small>Tech2Day 2015</small>
 					</p>
+					<p>
+						<small>@stefounet</small>
+					</p>
 				</section>
         <section>
           <section>
-            Ce dont je ne parlerai pas : inpage perf (rendering, layout, JS), backend, tls (session reuse, cache, tls record, certificate size), tcp slow start, tcp window scaling, disable slow start after idle, webrtc
+            Ce dont je ne parlerai pas : 
+            <ul style="text-align:left">
+              <li>inpage perf (rendering, layout, JS), 
+              <li>backend, 
+              <li>tls (session reuse, cache, tls record, certificate size), 
+              <li>tcp (slow start, tcp window scaling, disable slow start after idle), 
+              <li>webrtc
+            </ul>
           </section>
            <section>
             <h2>Petite</h2><h1>introduction</h1>
@@ -61,41 +71,81 @@
           </section>
           <section>
             Faire que les sites Web se chargent plus rapidement, 
-            sur tous les navigateurs, 
-            tous les devices 
-            toutes les connexions
+            <span class="fragment">sur tous les navigateurs,</span> 
+            <span class="fragment">tous les devices,</span> 
+            <span class="fragment">toutes les connexions</span>
             </section>
           <section>
-            différence entre backend/frontend
-            waterfall
+            <h2>backend/frontend</h2>
+            <img src="assets/waterfall.png" width="600">  
           </section>
           <section>
             mais pourquoi on fait ça ? 
             <aside class="notes">
-              image orangina
             </aside>
           </section>
-        </section>
+          <section>
+            <img src="assets/parce que.jpg">
+            <aside class="notes">
+            et sinon pour de vrai, ben c'est pour les utilisateurs, parce qu'on n'aime pas attendre 
+            </aside>
+          </section>
+          <section>
+            <img src="assets/wait.jpg">
+            <aside class="notes">
+            et donc ça a un impact sur le business
+            Y'a beaucoup d'études dont le fameux 100ms d'amazon qui montrent qu'il y a un impact négatif sur le business quand on ralentit un site web
+            De notre côté, nous on a montré l'inverse : qu'il y avait un impact positif quand on accélérait un site ! 
+            Par exemple, on voit la corrélation chez un client dans le secteur de la mode.
+            </aside>
+          </section>
+           <section data-transition="fast">
+
+          <img src="assets/conversion rate vs loadtime.png">
+          </section>
+          <section data-transition="fast">
+          <img src="assets/pageviews vs loadtime.png">
+          </section>
+         </section>
         <section>
           <section>
-            <h2>Les limites des règles actuelles</h2>
+            <h1>Les limites des règles actuelles</h1>
             <h3>quand la webperf va à l'encontre de la webperf</h3>
           </section>
           <section>
-            bible / moise / ancien testament
+            <img class="" src="assets/Moise.png" width="500" align="left" style="margin-bottom:400px;margin-right:50px">
+            <ul style="text-align:left;font-size:0.7em">
+              <li>Make Fewer HTTP Requests
+              <li>Use a Content Delivery Network
+              <li>Add an Expires Header
+              <li>Gzip Components
+              <li>Put Stylesheets at the Top
+              <li>Put Scripts at the Bottom
+              <li>Avoid CSS Expressions
+              <li>Make JavaScript and CSS External
+              <li>Reduce DNS Lookups
+              <li>Minify JavaScript
+              <li>Avoid Redirects
+              <li>Remove Duplicate Scripts
+              <li>Configure ETags
+              <li>Make AJAX Cacheable
+            </ul>
+
             <aside class="notes">
             Les règles de la Webperf ont été édicté par 
             </aside>
            </section>
           <section>
+            
             nouveau testament
           </section>
           <section>
             d'où elles viennent : 
-            la latence (
+            la latence
             temps d'établissement de connexion (poignée de main ?
             navigateurs
             le protocole HTTP1.1
+            <aside class="notes">ce qui n'a pas disparu : latence et TCP</aside>
           </section>
           <section>
             mais en fait
