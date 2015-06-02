@@ -58,7 +58,7 @@
         <section>
           Ce dont je ne parlerai pas : 
           <ul style="text-align:left">
-            <li>inpage perf (rendering, layout, JS, requestAnimationFrame, web workers, memory), 
+            <li>in-page perf (rendering, layout, JS, requestAnimationFrame, web workers, memory), 
             <li>backend, 
             <li>TlS (session reuse, cache, tls record, certificate size), 
             <li>TCP (slow start, tcp window scaling, disable slow start after idle), 
@@ -202,6 +202,7 @@
               <li class="fragment">les protocoles sont en train de changer (SPDY/HTTP2)</li>
               <li class="fragment">même les couches réseaux sont remises en cause (QUIC)</li>
             </ul>
+            <span class="fragment">et en plus</span>
             <ul class="fragment">
               <li>la manière de coder des sites a changé : SPA, RWD</li>
               <li>les widgets ont explosé à cause des tags managers</li>
@@ -214,7 +215,9 @@
 
           <section>
             <h2>Concatenation</h2>
-            <span class="fragment">JS / CSS</span><span class="fragment">, Images</span>
+            <h3>
+              <span class="fragment">JS / CSS</span><span class="fragment">, Images</span>
+            </h3>
             <ol>
               <li class="fragment">un seul gros fichier peut ralentir la page</li>
               <li class="fragment">on tape les limites d'IE</li>
@@ -229,7 +232,7 @@
               1. surtout le cas pour les ressrouces bloquantes. J'ai déjà croisé des CSS de 1Mo
               Le plus énervant c'est quand GTMetrix ou WPT vous dit que vous n'avez pas combiné vos CSS/JS : mais c'est ça que je veux faire !
             </aside>
-            </section>
+          </section>
 
           <section>
             <h2>Sharding / Cookieless domain</h2>
@@ -246,8 +249,6 @@
               deja vu : 4 ou 5 domaines statiques différents
               heureusement certains navigateurs détectent que c'est le même serveur derrière et ne refont pas de connexion TCP
             </aside>
-            </section>
-
           </section>
 
           <section>
@@ -290,7 +291,7 @@
         <section>
 
           <section>
-            <h2>et si on allait plus loin ?</h2>
+            <h1>et si on allait plus loin ?</h1>
           </section>
 
         </section>
@@ -299,10 +300,8 @@
 
           <section>
             <h2>cache cache</h2>
-          </section>
-
-          <section>
             et pour commencer si on faisait plus de cache
+
             <aside class="notes">
               d'accord vous allez dire, on s'est fait avoir, webperf 2.0 mon oeil il va me dire de mettre mes pages en cache
             </aside>
@@ -317,28 +316,27 @@
           </section>
 
           <section>
-            <h2>Inline first view + critical</h2>
-
-          </section>
-
-          <section>
             <h2>ESI/Ajax</h2>
+            <ul>
+              <li>Cacher les pages HTML et ajouter les parties dynamiques en Ajax ou en ESI</li>
+            </ul>
+          </section>
+
+        </section>
+
+        <section>
+
+          <section>
+            <h1>Chargement progressif</h1>
           </section>
 
           <section>
-            <h2>Fonts</h2>
-          </section>
-
-
-          <section>
-            <h2>Others</h2>
+            <h2>Techniques de sioux</h2>
 
             <ul>
               <li>Async font loading</li>
-              <li>Fonts optimizations</li>
-              <li>unsharding</li>
+              <li>Inline first view + critical</li>
               <li>JS async/defer</li>
-              <li>chargement progressif</li>
             </ul>
           </section>
 
@@ -346,7 +344,7 @@
         
         <section>
           <section>
-            Pré-
+           <h1>Pré-</h1>
           </section>
         </section>
 
@@ -357,15 +355,15 @@
           </section>
 
           <section>
-          we’re not replacing all of HTTP — the methods, status codes, and most of the headers you use today will be the same. Instead, we’re re-defining how it gets used “on the wire” so it’s more efficient, and so that it is more gentle to the Internet itself ....
-
-          New binary framing
-          ● One connection (session)
-          ● Many parallel requests (streams)
-          ● Header compression
-          ● Stream prioritization
-          ● Server push
-          
+          "we’re not replacing all of HTTP — the methods, status codes, and most of the headers you use today will be the same. Instead, we’re re-defining how it gets used “on the wire” so it’s more efficient, and so that it is more gentle to the Internet itself ...." -- @mnot
+            <ul>
+              <li>New binary framing</li>
+              <li>One connection (session)</li>
+              <li>Many parallel requests (streams)</li>
+              <li>Header compression</li>
+              <li>Stream prioritization</li>
+              <li>Server push</li>
+            </ul> 
           </section>
 
 
@@ -394,6 +392,18 @@
               <li>Use server hints to help browser load faster vip resources</li>
               <li>Server push is powerful when resources are not already in browser cache</li>
               <li>SDCH</li>
+            </ul>
+         </section>
+
+        </section>
+
+        <section>
+          <section>
+            <h2>Budget webperf</h2>
+
+            <ul>
+              <li>Service workers</li>
+              <li>Timeout sync scripts</li>
             </ul>
          </section>
 

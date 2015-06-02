@@ -37,6 +37,10 @@ body {
   text-align:left;
 }
 
+.reveal section ul li, .reveal section ol li {
+  line-height:1.2em;
+}
+
 /*********************************************
  * HEADERS
  *********************************************/
@@ -59,7 +63,10 @@ body {
 .reveal h1 {
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
-  font-size: 3em;
+  font-size: 2em;
+}
+.reveal h3 {
+  font-size: 0.9em;
 }
 
 /*********************************************
