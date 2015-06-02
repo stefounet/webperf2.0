@@ -39,6 +39,12 @@ body {
   margin-bottom:10px;
 }
 
+.reveal section ul ul {
+  text-align:left;
+  margin:10px 0px 10px 30px;
+}
+
+
 .reveal section ul li, .reveal section ol li {
   line-height:1.2em;
 }
@@ -73,6 +79,10 @@ body {
 }
 .reveal h3 {
   font-size: 0.9em;
+}
+
+.quote {
+  font-size:0.7em;
 }
 
 /*********************************************

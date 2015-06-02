@@ -84,7 +84,8 @@
             Faire que les sites Web se chargent plus rapidement, 
             <span class="fragment">sur tous les navigateurs,</span> 
             <span class="fragment">tous les devices,</span> 
-            <span class="fragment">toutes les connexions</span>
+            <span class="fragment">toutes les connexions,</span>
+            <span class="fragment">pour tous les utilisateurs</span>
           </section>
 
           <section>
@@ -92,9 +93,9 @@
             <img src="assets/waterfall.png" width="600"> 
  
             <aside class="notes">
-              On peut agir à deux niveaux : backend et frontend
-              Je parlerai essentiellement de frontend
-              Vous savez tous ce qu'est un waterfall ?
+              <p>On peut agir à deux niveaux : backend et frontend
+              <p>Je parlerai essentiellement de frontend
+              <p>Vous savez tous ce qu'est un waterfall ?
             </aside>
 
           </section>
@@ -133,8 +134,8 @@
             <img src="assets/conversion rate vs loadtime.jpg">
  
             <aside class="notes">
-              distribution des temps de chargement vs le taux de conversion et on voit donc clairement qu'un internaute qui charge le site rapidement transforme mieux.
-              A noter que cette distribution n'est pas une gaussienne et donc mesurer des moyennes de temps de chargement n'est pas très pertinent dans notre métier
+              <p>distribution des temps de chargement vs le taux de conversion et on voit donc clairement qu'un internaute qui charge le site rapidement transforme mieux.
+              <p>A noter que cette distribution n'est pas une gaussienne et donc mesurer des moyennes de temps de chargement n'est pas très pertinent dans notre métier
             </aside>
 
           </section>
@@ -144,8 +145,6 @@
 
             <aside class="notes">
               et pour ceux qui se posent la question, ce n'est pas près de s'arrêter 
-              <p>ça montre l'évolution du poids et de la complexité des pages depuis environ 4 ans
-              <p> on est passé de 700ko a 2Mo
             </aside>
 
            </section>
@@ -154,6 +153,8 @@
              <img src="assets/evolution size.png">
 
             <aside class="notes">
+              <p>ça montre l'évolution du poids et de la complexité des pages depuis environ 4 ans
+              <p> on est passé de 700ko a 2Mo
               mais heureusement y'a des règles qui existent pour améliorer les perfs
             </aside>
 
@@ -193,6 +194,7 @@
             </ul>
 
             <aside class="notes">
+              Les règles de la Webperf ont été édicté en 2007 par Steve Moise Souders dans un bouquin appelé "High Performance Websites"
               Elles ont été complétées et affinées au fur et à mesure
               dans un second bouquin, collectif celui-là, "Even Faster websites"
             </aside>
@@ -216,6 +218,7 @@
             </ul>
 
             <aside class="notes">
+              dans un second bouquin, collectif celui-là, "Even Faster websites"
               Mais pourquoi ces règles existent, d'où elles sortent ?
             </aside>
 
@@ -277,38 +280,42 @@
             <h3>
               <span class="fragment">JS / CSS</span><span class="fragment">, Images</span>
             </h3>
-            <ol>
+            <ul>
               <li class="fragment">un seul gros fichier peut ralentir la page</li>
-              <li class="fragment">on tape les limites d'IE</li>
+              <li class="fragment">on tape les limites d'IE9</li>
               <li class="fragment">impossible d'établir une priorité dans le code téléchargé</li>
               <li class="fragment">ça pète le cache (et le flush est plus contraignant)</li>
               <li class="fragment">maintenabilité</li>
-            </ol>
+            </ul>
             <p class="fragment">Trouver un intermédiaire en fonction de la taille et de la composition du site.</p>
+            <p class="fragment">Et aussi avoir un bon process de build</p>
 
             <aside class="notes">
-              ça concerne les JS et les CSS mais aussi les images avec la technique du spriting
-              La concaténation vient de deux choses : nb de requêtes possibles en parallèle, latence, connexion TCP 
-              1. surtout le cas pour les ressrouces bloquantes. J'ai déjà croisé des CSS de 1Mo
-              Le plus énervant c'est quand GTMetrix ou WPT vous dit que vous n'avez pas combiné vos CSS/JS : mais c'est ça que je veux faire !
+              <p>ça concerne les JS et les CSS mais aussi les images avec la technique du spriting
+              <p>La concaténation vient de deux choses : nb de requêtes possibles en parallèle, latence, connexion TCP 
+              <p>1. surtout le cas pour les ressrouces bloquantes. J'ai déjà croisé des CSS de 1Mo, à cause des fonts inlinées
+              <p>Le plus énervant c'est quand GTMetrix ou WPT vous dit que vous n'avez pas combiné vos CSS/JS : mais c'est ça que je veux faire !
+              <p>limites IE9 : 4096 sélecteurs/fichiers, max 278ko
             </aside>
 
           </section>
 
           <section>
             <h2>Sharding / Cookieless domain</h2>
-            <ol>
-              <li>introduit de nouvelles résolutions DNS, en général dans le head</li>
+            <ul>
+              <li>introduit de nouvelles résolutions DNS, en général dans le <code>&lt;head&gt;</code></li>
               <li>"low" vs high latency network</li>
-            </ol>
+            </ul>
+
+            <p class="fragment">Vaut mieux éviter, surtout pour les ressources bloquantes</p>
 
             <aside class="notes">
-              Définition du sharding/cookieless domain
-              ça vient de deux choses : nb de requêtes possibles en parallèle, upload limité, pas de compression des headers 
-              mais aujourd'hui les navigateurs sont passés de 2 à 6 requêtes en // par domaine
-              low : mobile ou Chine
-              deja vu : 4 ou 5 domaines statiques différents
-              heureusement certains navigateurs détectent que c'est le même serveur derrière et ne refont pas de connexion TCP
+              <p>Définition du sharding/cookieless domain
+              <p>ça vient de deux choses : nb de requêtes possibles en parallèle, upload limité, pas de compression des headers 
+              <p>mais aujourd'hui les navigateurs sont passés de 2 à 6 requêtes en // par domaine
+              <p>low : mobile ou Chine
+              <p>deja vu : 4 ou 5 domaines statiques différents
+              <p>heureusement certains navigateurs détectent que c'est le même serveur derrière et ne refont pas de connexion TCP
             </aside>
 
           </section>
@@ -322,7 +329,7 @@
 
             <aside class="notes">
               l'explication est simple : le préparser/preloader/speculative parser va chercher les élements en avance de phase avant de construire le DOM
-              en faisant du lazyloading, on masque les images à ce preloader et on délègue le chargement à un script qui va s'exécuter assez tard
+              <p>en faisant du lazyloading, on masque les images à ce preloader et on délègue le chargement à un script qui va s'exécuter assez tard
             </aside>
 
           </section>
@@ -332,7 +339,7 @@
 
             <aside class="notes">
               l'explication est la même : le préparser/preloader/speculative parser va chercher les élements en avance de phase avant de construire le DOM
-              c'est assez amusant de voir le JS tout en bas de page sortir en seconde requête :-)
+              <p>c'est assez amusant de voir le JS tout en bas de page sortir en seconde requête :-)
             </aside>
 
            </section>
@@ -342,7 +349,7 @@
             <ul>
               <li class="fragment">aucun gain</li>
               <li class="fragment">sauf si on minifie de façon agressive</li>
-              <li class="fragment">personne le fait parce que c'est trop dangereux</li>
+              <li class="fragment">personne ne le fait parce que c'est trop dangereux</li>
             </ul>
 
             <aside class="notes">
@@ -359,8 +366,7 @@
             <h1>et si on allait plus loin ?</h1>
  
             <aside class="notes">
-              Rapidement, c'est quoi la webperf ?<br>
-              Moi j'ai une définition simple
+
             </aside>
 
           </section>
@@ -375,6 +381,10 @@
 
             <aside class="notes">
               d'accord vous allez dire, on s'est fait avoir, webperf 2.0 mon oeil il va me dire de mettre mes pages en cache
+              <p>eh ben oui, exactement
+              <p>c'est pas la technique du futur c'est vrai mais ça a tellement d'avantage ...
+              <p>D'abord, cacher ce qui est cachable, ça semble évident mais bon ...
+              <p>ensuite
             </aside>
 
           </section>
@@ -387,8 +397,8 @@
             </ul>
  
             <aside class="notes">
-              Rapidement, c'est quoi la webperf ?<br>
-              Moi j'ai une définition simple
+              pour les utilisateurs qui ne sont jamais venus sur votre site, pas besoin d'aller dans la base de données lui chercher un panier vide
+              <p> a noter que ça fonctionne aussi pour les bots ... je dis ça comme ça ...
             </aside>
 
           </section>
@@ -400,8 +410,7 @@
             </ul>
  
             <aside class="notes">
-              Rapidement, c'est quoi la webperf ?<br>
-              Moi j'ai une définition simple
+              Là ça consiste à cacher le layout pour répondre instantanément et accélerer le start render et ensuite enrichir avec les données dynamiques
             </aside>
 
           </section>
@@ -409,13 +418,14 @@
         </section>
 
         <section>
-
+        
           <section>
             <h1>Chargement progressif</h1>
  
             <aside class="notes">
-              Rapidement, c'est quoi la webperf ?<br>
-              Moi j'ai une définition simple
+            C'est d'ailleurs un thème majeur à suivre dans la webperf : le chargement progressif.
+            <p>ça consiste à charger la page avec des fonctionnalités minimales, un rendu suffisant pour tout ce qui est au dessus de la ligne de flottaison et ensuite de charger petit à petit le reste : les CSS manquants (pour les popups par ex), le JS pour l'interaction, les widgets, les CSS pour les autres pages, etc ...
+            <p>Attention ce sont des techniques de sioux mais ce sont surement celles qui donnent le plus de résultat aujourd'hui
             </aside>
 
           </section>
@@ -424,15 +434,37 @@
             <h2>Techniques de sioux</h2>
 
             <ul>
-              <li>Async font loading</li>
-              <li>Inline critical CSS/JS + async loading</li>
-              <li>Inline first view</li>
-              <li>JS async/defer/iframe</li>
+              <li class="fragment">JS async/defer/iframe</li>
+              <li class="fragment">Lazyloading image/iframe</li>
             </ul>
  
             <aside class="notes">
-              Rapidement, c'est quoi la webperf ?<br>
-              Moi j'ai une définition simple
+              <p>Y'a celles qu'on connait déjà
+              defer vs async: 
+            </aside>
+
+          </section>
+
+          <section>
+            <h2>Techniques de sioux</h2>
+
+            <ul>
+              <li class="fragment">Async font loading</li>
+              <ul class="fragment">
+                <li>Chargement des fonts via loadCSS
+                <li>Application quand les fonts sont disponibles (font event / polyfill fontFaceObserver)
+              </ul>
+              <li class="fragment">Inline critical CSS/JS + async loading</li>
+                <ul class="fragment">
+                  <li>Séparer ce qui est critique pour le rendu ATF
+                  <li>Inliner ce qui est critique
+                  <li>Charger le reste en asynchrone
+                  <li>Charger la totale ensuite pour remplir le cache
+                </ul>
+              <li class="fragment">Inline first view</li>
+            </ul>
+ 
+            <aside class="notes">
             </aside>
 
           </section>
@@ -445,23 +477,22 @@
            <h1>Pré-</h1>
  
             <aside class="notes">
-              Rapidement, c'est quoi la webperf ?<br>
-              Moi j'ai une définition simple
             </aside>
 
           </section>
 
           <section>
-            <h2>3 type</h2>
+            <h2>3 types</h2>
             <h3>preconnect, prefetch, prerender</h3>
            <ul>
-             <li>pas très bien supporté</li>
-             <li>accessible en &lt;link&gt; ou en header Link:</li>
-             <li>des fois accessible via JS</li>
+             <li class="fragment">pas très bien supporté</li>
+             <li class="fragment">accessible en &lt;link&gt; ou en header Link:</li>
+             <li class="fragment">des fois accessible via JS</li>
  
             <aside class="notes">
-              Rapidement, c'est quoi la webperf ?<br>
-              Moi j'ai une définition simple
+              <p>gros potentiel mais bcp de difficultés à surmonter
+              <p>utile pour des pages connues à l'avance : soit par analyse statistiques, soit sur des tunnels
+              <p>le dns-prefetch ne sert pas à grand chose si le preparser peut les découvrir tout seul
             </aside>
 
           </section>
@@ -474,17 +505,17 @@
             <h2>HTTP2 est arrrrivé</h2>
  
             <aside class="notes">
-              Rapidement, c'est quoi la webperf ?<br>
-              Moi j'ai une définition simple
             </aside>
 
           </section>
 
           <section>
-          <p class="quote">"we’re not replacing all of HTTP — the methods, status codes, and most of the headers you use today will be the same. Instead, we’re re-defining how it gets used “on the wire” so it’s more efficient, and so that it is more gentle to the Internet itself ...." — @mnot</p>
+            <p class="quote">"we’re not replacing all of HTTP — the methods, status codes, and most of the headers you use today will be the same. Instead, we’re re-defining how it gets used “on the wire” so it’s more efficient, and so that it is more gentle to the Internet itself ...." — @mnot</p>
             <br>
-            <img src="assets/http2_2.png">
-            <img src="assets/http2_1.png">
+            <div align="left" style="float:left; width:50%;margin-bottom:400px">
+              <img src="assets/http2_2.png">
+              <img src="assets/http2_1.png">
+            </div>
             <ul>
               <li>New binary framing</li>
               <li>One connection (session)</li>
@@ -493,18 +524,23 @@
               <li>Stream prioritization</li>
               <li>Server push</li>
             </ul> 
-
             <aside class="notes">
-              qu'est-ce que ça veut dire du coup ?
-              une requête n'est pas obligé d'attendre une réponse pour se lancer 
-              le serveur (donc l'application) peut décider quelles resources sont prioritaires et les prioriser dans le flux
-              le serveur peut envoyer des resources qui n'ont pas encore été requêtées (avec un mécanisme d'annulation possible si le navigateur l'a dans le cache
+              <p>qu'est-ce que ça veut dire du coup ?
+              <p>une requête n'est pas obligé d'attendre une réponse pour se lancer 
+              <p>le serveur (donc l'application) peut décider quelles resources sont prioritaires et les prioriser dans le flux
+              <p>le serveur peut envoyer des resources qui n'ont pas encore été requêtées (avec un mécanisme d'annulation possible si le navigateur l'a dans le cache
+              <p> au niveau des règles ça veut dire quoi ?  
             </aside>
 
           </section>
 
           <section>
-            <h2>remove CSS and JS concatenation</h2>
+            <h2>Impact sur le waterfall</h2>
+            <img src="assets/http vs spdy.jpg">
+          <section>
+
+          <section>
+            <h2>suppression de la concaténation</h2>
 
             <ul>
               <li>to help code start earlier</li>
@@ -512,8 +548,7 @@
             </ul>
  
             <aside class="notes">
-              Rapidement, c'est quoi la webperf ?<br>
-              Moi j'ai une définition simple
+              sauf si vous avez 25 fichiers JS
             </aside>
 
           </section>
@@ -584,11 +619,10 @@
 
           <section>
           <h2>Nouveaux formats</h2>
-          <h3>JPG 2000, JPG-XR, WebP
+          <h3>JPG 2000, JPG-XR, WebP</h3>
  
             <aside class="notes">
-              Rapidement, c'est quoi la webperf ?<br>
-              Moi j'ai une définition simple
+              Franchement ? Aucun intérêt 
             </aside>
 
           </section>
