@@ -571,7 +571,6 @@
             </ul>
  
             <aside class="notes">
-              Mise à disposition de nouvelles fonctionnalités
             </aside>
 
          </section>
@@ -607,10 +606,9 @@
           <section>
             <h2>Timeout sync scripts</h2>
             <ul>
-              <li class="fragment">Sorte de proxy in-page
-              <li class="fragment">Repose sur la nouvelle API Fetch et les Promises
-              <li class="fragment">Arrive sur les navigateurs doucement
-              <li class="fragment">Seul bémol : pas de timeout ou de cancel
+              <li class="fragment">Certains scripts sont bloquants (A/B test)
+              <li class="fragment">Possibilité de les timeboxer (&lt;250ms)
+              <li class="fragment">Kameleoon, Optimizely
             </ul>
  
             <aside class="notes">
@@ -635,54 +633,71 @@
           </section>
 
           <section>
-          <h2>Nouveaux formats</h2>
-          <h3>JPG 2000, JPG-XR, WebP</h3>
+            <h2>Nouveaux formats</h2>
+            <h3>JPG 2000, JPG-XR, WebP</h3>
+            <img src="assets/repartition format image.png" class="fragment">
  
+            <p class="fragment">WTF ???</p>
+
             <aside class="notes">
               Franchement ? Aucun intérêt 
+              <p>en fait, assez facile à comprendre, les imges ce n'est pas que pour le web.
+              <p>Si certains n'ont pas les outils mour les lire aucun intérêt (l'expérience de FB sur le WebP est significative)
+              <p>Du coup il reste les anciens formats
             </aside>
 
           </section>
 
           <section>
-            Ancien formats
+            <h2>JPG</h2>
  
+            <ul>
+              <li>MozJPEG3.0</li>
+              <li>Compression avancée
+              <li>Meilleure qualité sur les dessins et les images Retina
+            </ul>
             <aside class="notes">
-              Rapidement, c'est quoi la webperf ?<br>
-              Moi j'ai une définition simple
+              Eh oui il y a encore du mouvement dans ce format !!
+              <p>notamment avec MozJpg
             </aside>
 
+          </section>
+
+          <section data-transition="fast">
+            <h2>PNG</h2>
+            <img class="" src="assets/standards.png">
+          </section>
+
+          <section data-transition="fast">
+            <h2>JPG standard 1</h2>
+            <img class="" src="assets/standards1.jpg">
+          </section>
+
+          <section data-transition="fast">
+            <h2>JPG standard 2</h2>
+            <img class="" src="assets/standards2.jpg">
+          </section>
+
+          <section data-transition="fast">
+            <h2>MozJPEG</h2>
+            <img class="" src="assets/standards3.jpg">
           </section>
 
           <section>
-            JPG
- 
+            <h2>GIF</h2>
+            Un seul outil : LossyGif (fork de GifSicle)
+            <ul>
+              <li>Possibilité de les transformer en PNG s'ils ne sont pas animés</li>
+              <li>Possibilité de les optimiser fortement sinon</li>
+            </ul>
             <aside class="notes">
-              Rapidement, c'est quoi la webperf ?<br>
-              Moi j'ai une définition simple
+              C'est bête mais on fait encore plein d'animations avec des GIf sur certains sites
+              <p>J'en ai même vu une de 13Mo sur le site d'Ikea il y a quelques semaines ...
+              <p>même pas obligé de changer les extension, c'est comme pour les WebP, il suffit de renvoyer le bon content-type
             </aside>
 
           </section>
 
-          <section>
-            GIF
- 
-            <aside class="notes">
-              Rapidement, c'est quoi la webperf ?<br>
-              Moi j'ai une définition simple
-            </aside>
-
-          </section>
-
-          <section>
-            Compressive images
- 
-            <aside class="notes">
-              Rapidement, c'est quoi la webperf ?<br>
-              Moi j'ai une définition simple
-            </aside>
-
-          </section>
 
         </section>
 
@@ -698,10 +713,14 @@
 
           <section>
             <h2>Le load time c'est mort</h2>
-            <img src="assets/correlation metrics load time.png">
-            <ul>
-              <li class="fragment">Speed Index
-              <li class="fragment">Start Render (via msFirstPaint)
+            <div align="left" style="float:left;margin:0 50px 300px 0">
+              <img src="assets/correlation metrics load time.png">
+              <img src="assets/correlation metrics render.png">
+            </div>
+            <ul class="fragment">
+              <li>Speed Index
+              <li>Start Render
+              <li>Disponible en RUM !
             </ul>
  
             <aside class="notes">
