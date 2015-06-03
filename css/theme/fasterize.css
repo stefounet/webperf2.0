@@ -81,8 +81,8 @@ body {
   font-size: 0.9em;
 }
 
-.quote {
-  font-size:0.7em;
+.reveal .quote { 
+  font-size:0.5em;
 }
 
 /*********************************************
