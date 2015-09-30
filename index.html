@@ -48,7 +48,7 @@
           <br>
           <br>
 					<p>
-						<h2>Tech2Day 2015</h2>
+						<h2>ParisWeb 2015</h2>
 					</p>
 					<p>
 						<small>@stefounet</small>
@@ -58,10 +58,10 @@
         <section>
           Ce dont je ne parlerai pas : 
           <ul style="text-align:left">
-            <li>in-page perf (rendering, layout, JS, requestAnimationFrame, web workers, memory), 
-            <li>backend, 
-            <li>TLS (session reuse, cache, tls record, certificate size), 
-            <li>TCP (slow start, tcp window scaling, disable slow start after idle), 
+            <li>in-page perf (rendering, layout, JS, requestAnimationFrame, web workers, memory) 
+            <li>backend 
+            <li>TLS (session reuse, cache, tls record, certificate size) 
+            <li>TCP (slow start, tcp window scaling, disable slow start after idle) 
             <li>WebRTC
             <li>resources timing, navigation timing
           </ul>
@@ -144,17 +144,75 @@
             <img src="assets/pageviews vs loadtime.jpg">
 
             <aside class="notes">
-              et pour ceux qui se posent la question, ce n'est pas près de s'arrêter 
+              on peut même le mesurer avec des tests A/B !
             </aside>
 
-           </section>
+          </section>
 
           <section data-transition="fast">
-             <img src="assets/evolution size.png">
+            <img src="assets/ABtest.png">
+
+            <aside class="notes">
+              et dernier graphique que je trouve vraiment super intéressant c'est le funnel où on mesure ce qui se passe pour les utilisateurs à chaque étape en terme de temps de chargement
+            </aside>
+
+          </section>
+ 
+          <section data-transition="fast">
+            <img src="assets/funnel.png">
+
+            <aside class="notes">
+              ah oui et pour ceux qui se posent la question, ce n'est pas près de s'arrêter 
+            </aside>
+
+          </section>
+          
+          <section>
+            <video  controls src="assets/video Cdiscount.ogg">  
+          </section>
+
+          <section data-transition="fast">
+            <img src="assets/evolution size.png">
 
             <aside class="notes">
               <p>ça montre l'évolution du poids et de la complexité des pages depuis environ 4 ans
               <p> on est passé de 700ko a 2Mo
+            </aside>
+
+          </section>
+
+          <section data-transition="fast">
+            <img src="assets/evolution size JS.png"> 
+
+            <aside class="notes">
+              ça vaut pour les JS
+            </aside>
+
+          </section>
+
+          <section data-transition="fast">
+            <img src="assets/evolution size CSS.png"> 
+
+            <aside class="notes">
+              pour les CSS
+            </aside>
+
+          </section>
+
+          <section data-transition="fast">
+            <img src="assets/evolution size image.png"> 
+
+            <aside class="notes">
+              pour les images
+            </aside>
+
+          </section>
+
+          <section data-transition="fast">
+            <img src="assets/evolution size font.png">
+
+            <aside class="notes">
+              et plus récemmment et peut être avec plus d'impact, pour les fonts
               mais heureusement y'a des règles qui existent pour améliorer les perfs
             </aside>
 
@@ -249,7 +307,7 @@
           <section>
             <p>mais en fait, aujourd'hui</p>
             <ul>
-              <li class="fragment">les navigateurs ont évolué en 10 ans (Firefox 38!)</li>
+              <li class="fragment">les navigateurs ont évolué en 10 ans (Firefox 40!)</li>
               <li class="fragment">les terminaux ont changé </li>
               <li class="fragment">les protocoles sont en train de changer (SPDY/HTTP2)</li>
               <li class="fragment">même les couches réseaux sont remises en cause (QUIC)</li>
@@ -282,13 +340,24 @@
             </h3>
             <ul>
               <li class="fragment">un seul gros fichier peut ralentir la page</li>
-              <li class="fragment">on tape les limites d'IE9</li>
+            </ul>
+            <img src="assets/bigCSS.png" class="fragment">
+
+          </section>
+
+          <section data-transition="fast">
+            <h2>Concatenation</h2>
+            <h3>
+              <span>JS / CSS, Images</span>
+            </h3>
+            <ul>
+              <li>un seul gros fichier peut ralentir la page</li>
+              <li>on tape les limites d'IE9</li>
               <li class="fragment">impossible d'établir une priorité dans le code téléchargé</li>
               <li class="fragment">ça pète le cache (et le flush est plus contraignant)</li>
               <li class="fragment">maintenabilité</li>
-            </ul>
-            <p class="fragment">Trouver un intermédiaire en fonction de la taille et de la composition du site.</p>
-            <p class="fragment">Et aussi avoir un bon process de build</p>
+             </ul>
+             <img src="assets/divCombinedAndMinified.png" class="fragment" width="800">
 
             <aside class="notes">
               <p>ça concerne les JS et les CSS mais aussi les images avec la technique du spriting
@@ -300,6 +369,26 @@
 
           </section>
 
+          <section data-transition="fast">
+            <h2>Concatenation</h2>
+            <h3>
+              <span>JS / CSS, Images</span>
+            </h3>
+            <p><br>
+            <p><br>
+            <p>Trouver un intermédiaire en fonction de la taille et de la composition du site.</p>
+            <p class="fragment">Et aussi avoir un bon process de build</p>
+
+            <aside class="notes">
+              <p>ça concerne les JS et les CSS mais aussi les images avec la technique du spriting
+              <p>La concaténation vient de deux choses : nb de requêtes possibles en parallèle, latence, connexion TCP 
+              <p>1. surtout le cas pour les ressrouces bloquantes. J'ai déjà croisé des CSS de 1Mo, à cause des fonts inlinées
+              <p>Le plus énervant c'est quand GTMetrix ou WPT vous dit que vous n'avez pas combiné vos CSS/JS : mais c'est ça que je veux faire !
+              <p>limites IE9 : 4096 sélecteurs/fichiers, max 278ko
+            </aside>
+
+
+          </section>
           <section>
             <h2>Sharding / Cookieless domain</h2>
             <ul>
@@ -314,7 +403,7 @@
               <p>ça vient de deux choses : nb de requêtes possibles en parallèle, upload limité, pas de compression des headers 
               <p>mais aujourd'hui les navigateurs sont passés de 2 à 6 requêtes en // par domaine
               <p>low : mobile ou Chine
-              <p>deja vu : 4 ou 5 domaines statiques différents
+              <p>deja vu : 4 ou 5 domaines statiques différents (cf. https://www.fasterize.com/en/website_configs/1998/hosts_mapping) =&gt; unsharding
               <p>heureusement certains navigateurs détectent que c'est le même serveur derrière et ne refont pas de connexion TCP
             </aside>
 
@@ -354,6 +443,7 @@
 
             <aside class="notes">
               c'est du markete de la perf, ça enquiquinne tout le monde et personne n'a fait d'étude pour savoir si ça avait un vrai impact sur le parsing (source map)
+              Au final, quand j'entends des gens qui se lancent aujourd'hui  dans la minification et la concaténation JS/CSS, je leur dis "surtout pas malheureux !" 
             </aside>
 
           </section>
@@ -391,10 +481,10 @@
 
           <section>
             <h2>Cookieless cache</h2>
+            <p><br>
+            <p><br>
 
-            <ul>
-              <li>Cacher les pages dynamiques pour les nouveaux utilisateurs ou  les utilisateurs anonymes</li>
-            </ul>
+              <p class="fragment">Cacher les pages dynamiques pour les nouveaux utilisateurs ou  les utilisateurs anonymes</p>
  
             <aside class="notes">
               pour les utilisateurs qui ne sont jamais venus sur votre site, pas besoin d'aller dans la base de données lui chercher un panier vide
@@ -405,12 +495,13 @@
 
           <section>
             <h2>ESI/Ajax</h2>
-            <ul>
-              <li>Cacher les pages HTML et ajouter les parties dynamiques en Ajax ou en ESI</li>
-            </ul>
+            <p><br>
+            <p><br>
+            <p class="fragment">Cacher les pages HTML et ajouter les parties dynamiques en Ajax</p>
  
             <aside class="notes">
               Là ça consiste à cacher le layout pour répondre instantanément et accélerer le start render et ensuite enrichir avec les données dynamiques
+              en fait ça revient à utiliser une technique plus générale, le chargement progressif
             </aside>
 
           </section>
@@ -431,7 +522,7 @@
           </section>
 
           <section>
-            <h2>Techniques de sioux</h2>
+            <h2>Techniques de <span style="font-size:0.7em">(petit)</span> sioux</h2>
 
             <ul>
               <li class="fragment">JS async/defer/iframe</li>
@@ -446,7 +537,7 @@
           </section>
 
           <section>
-            <h2>Techniques de sioux</h2>
+            <h2>Techniques de <span style="font-size:1.2em">(grand)</span> sioux</h2>
 
             <ul>
               <li class="fragment">Async font loading</li>
@@ -465,6 +556,7 @@
             </ul>
  
             <aside class="notes">
+            C'est quand même assez difficile à automatiser !
             </aside>
 
           </section>
@@ -493,6 +585,7 @@
               <p>gros potentiel mais bcp de difficultés à surmonter
               <p>utile pour des pages connues à l'avance : soit par analyse statistiques, soit sur des tunnels
               <p>le dns-prefetch ne sert pas à grand chose si le preparser peut les découvrir tout seul
+              ou si les domaines arrivent tôt dans la page
             </aside>
 
           </section>
@@ -503,6 +596,7 @@
 
           <section>
             <h1>HTTP2 est arrrrivééé</h1>
+            <audio src="assets/zorro.mp3" controls data-autoplay>
  
             <aside class="notes">
             </aside>
@@ -571,6 +665,7 @@
             </ul>
  
             <aside class="notes">
+              un peu l'équivalent du Link en header mais avec le contenu en plus !
             </aside>
 
          </section>
@@ -725,11 +820,28 @@
             </ul>
  
             <aside class="notes">
-              reste à amliorer mais 
+              load time : exemple de la page blanche
+              Speed index mesure la vitesse de remplissage de la page
+              reste à améliorer mais c'est déjà ça 
             </aside>
 
           </section>
 
+          <section data-transition="fast">
+            <h2>Speed Index</h2>
+            <img src="assets/speedindex1.png">
+          </section>
+
+          <section data-transition="fast">
+            <h2>Speed Index</h2>
+            <img src="assets/speedindex2.png">
+          </section>
+
+          <section data-transition="fast">
+            <h2>Speed Index</h2>
+            <img src="assets/speedindex3.png">
+          </section>
+  
         </section>
 
         <section>
@@ -813,7 +925,7 @@
 			</div>
 
 			<div class="icon-bar" style="width:100%">
-					<a class="image" href="http://www.fasterize.com" style="font-size:28px; font-family: AvenirNext-Medium,Arial,sans-serif; color: #FFF;"><img src="assets/fasterize_logo_mini_blanc.svg" class="plain"/><span class="logo_title">fasterize</span></a>
+					<a class="image" href="http://www.fasterize.com" style="font-size:20px; font-family: AvenirNext-Medium,Arial,sans-serif; color: #FFF;"><img src="assets/fasterize_logo_mini_blanc.svg" class="plain"/><span class="logo_title">fasterize</span></a>
           <div align="right" style="float:right">
 					<a class="image" href="https://twitter.com/stefounet"><span>twitter</span></a>|
           <a class="image" href="mailto:info@fasterize.com"><span>email</span></a>|

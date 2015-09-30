@@ -186,9 +186,6 @@ body {
   border: 0px solid white;
   box-shadow: 0 0 0px transparent; }
 
-.logo_title img span {
-
-}
 
 @font-face {
   font-family: 'AvenirNext-Medium';
@@ -213,7 +210,7 @@ body {
 
 .reveal .icon-bar img {
   vertical-align: middle;
-  height:30px;
+  height:20px;
 }
 
 .reveal .icon-bar a {
